@@ -1,0 +1,3 @@
+C:\Users\Alam\OneDrive\WCFServiceAlamex\obj\Debug\ExcelonContracts.csproj.AssemblyReference.cache
+C:\Users\Alam\OneDrive\WCFServiceAlamex\obj\Debug\ExcelonContracts.csproj.ResolveComReference.cache
+C:\Users\Alam\OneDrive\WCFServiceAlamex\obj\Debug\ExcelonContracts.csproj.CoreCompileInputs.cache

@@ -1,0 +1,14 @@
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\bin\Debug\MetaExcelContracts.dll
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\bin\Debug\MetaExcelContracts.pdb
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.csproj.AssemblyReference.cache
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.csproj.ResolveComReference.cache
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.csproj.CoreCompileInputs.cache
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.dll
+C:\Users\Alam\source\repos\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.pdb
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\bin\Debug\MetaExcelContracts.dll
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\bin\Debug\MetaExcelContracts.pdb
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.csproj.AssemblyReference.cache
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.csproj.ResolveComReference.cache
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.csproj.CoreCompileInputs.cache
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.dll
+C:\Users\Alam\OneDrive\WCFServiceAlamex\MetaExcelContracts\obj\Debug\MetaExcelContracts.pdb

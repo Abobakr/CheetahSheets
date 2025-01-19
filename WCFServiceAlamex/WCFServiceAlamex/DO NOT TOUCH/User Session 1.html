@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>-2147483642@new sess\User Session 1.xlsx</title>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div style="padding-top:15px" />
+
+    <div id="myExcelDiv" style="width: 100%; height: 1000px"></div>
+
+    
+    <script type="text/javascript" src="https://onedrive.live.com/embed?resid=6B69B2943F1A08BE%2110346&authkey=%21AI-oSXNNVDxP8ac&em=3&wdDivId=%22myExcelDiv%22&wdActiveCell=%22'ELEKTR%C4%B0K%20PROFORMA'!F7%22&wdAllowTyping=1"></script>
+
+    <script type="text/javascript">
+
+
+        var chngs = [];
+        var ewa;
+
+        window.addEventListener("DOMContentLoaded", Page_Load, false);
+        window.chrome.webview.addEventListener('message', msg => {
+            switch (msg.data) {
+                case "GetLastChanges": sendLastChanges(); break;
+                case "GetSelectedSheet": sendSelectedSheet(); break;
+            }
+        });
+
+
+        function Page_Load() {
+            Ewa.EwaControl.add_applicationReady(GetEwa);
+        }
+
+        function GetEwa() {
+            ewa = Ewa.EwaControl.getInstances().getItem(0);
+            ewa.getActiveWorkbook().add_sheetDataEntered(sheetDataEnteredHandler);
+        }
+
+        function sheetDataEnteredHandler(rangeChangeArgs) {
+
+            let name = rangeChangeArgs.getRange().getSheet().getName();
+            let col = rangeChangeArgs.getRange().getColumn();
+            let row = rangeChangeArgs.getRange().getRow();
+            let val = rangeChangeArgs.getFormattedValues()[0][0];
+
+            let chng = { name, row, col, val };
+
+            if (chngs.length == 0) {
+                window.chrome.webview.postMessage({ 'isSynchronized': false });
+                chngs.push(chng);
+            }
+            else {
+                let oldChng = chngs.find(x => x.name === chng.name && x.row === chng.row && x.col === chng.col);
+                if (oldChng != null)
+                    oldChng.val = chng.val;
+                else chngs.push(chng);
+            }
+
+        }
+
+        function sendLastChanges() {
+            window.chrome.webview.postMessage({ 'changes': chngs });
+            chngs = [];
+        }
+
+        function sendSelectedSheet() {
+            let name = ewa.getActiveWorkbook().getActiveSheet().getName();
+            window.chrome.webview.postMessage(name);
+        }
+    </script>
+
+
+</body>
+
+</html>

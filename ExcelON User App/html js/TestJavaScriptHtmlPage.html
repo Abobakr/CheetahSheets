@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>Test Restful Service</title>
+    <meta name="viewport" content="width=device-width">
+    <!--<meta charset="utf-8">--> 
+</head>
+<body>
+    <p>Test Web Service</p>
+    <button type="button" onclick="myFunction()">Try it!</button>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname">
+    <p id="demo"></p>
+
+    <script>
+
+        function myFunction() {
+
+            //var tags =
+            //    [
+            //        { tagId: "ffff1000754b", RSPdecibels: [93, -59, 85] },
+            //        { tagId: "ffff70004ee1", RSPdecibels: [45, 99, 77] },
+            //        { tagId: "xxxxxxxxxxxx", RSPdecibels: [-45, 11, 94] },
+            //        { tagId: "yyyyyyyyyyyy", RSPdecibels: [23, 34, 52] },
+            //        { tagId: "zzzzzzzzzzzz", RSPdecibels: [05, 11, 32] }
+            //    ];
+            //var RaspBerries = [];
+            //var RSPCount = 3;
+            //for (var i = 1; i <= RSPCount; i++) {
+            //    var RaspBerry = { RspMacAdd: "xxx", TagIdes: [] }
+            //    tags.forEach(function (entry) {
+            //        if (entry.RSPdecibels.indexOf(Math.max(...entry.RSPdecibels)) + 1 == i) {
+            //            RaspBerry.TagIdes.push(entry.tagId);
+            //        }
+            //    });
+            //    RaspBerries.push(RaspBerry);
+            //}
+            //RaspBerries[0].RspMacAdd = "b8:27:eb:8c:93:27";
+            //RaspBerries[1].RspMacAdd = "00:0a:95:9d:68:17";
+            //RaspBerries[2].RspMacAdd = "00:0a:95:9d:68:18";
+
+            //The Array should look like this
+
+            var code = document.getElementById('fname').value;
+            var compData = { BoolValue: true, StringValue: code }
+
+            var url = "http://localhost/Service.svc/GetCompData";
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.alert(this.responseText);
+                }
+            };
+            xhttp.open("POST", url, true);
+            //xhttp.setRequestHeader('Content-Type', 'application/json');
+            //xhttp.send(compData);
+            xhttp.send(JSON.stringify(compData));
+            //xhttp.send();
+        }
+    </script>
+
+</body>
+</html>

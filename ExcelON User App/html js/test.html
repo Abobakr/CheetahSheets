@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="http://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
+    <script type="text/javascript">
+
+        var ewa = null;//*******************ADDING THIS IS BETTER**************************
+
+        // run the Excel load handler on page load
+        if (window.attachEvent) {
+            window.attachEvent("onload", loadEwaOnPageLoad);
+        } else {
+            window.addEventListener("DOMContentLoaded", loadEwaOnPageLoad, false);
+        }
+
+        function loadEwaOnPageLoad() {
+            var fileToken = "SDBBABB911BCD68292!110/-4923638281765748078/t=0&s=0&v=!ALTlXd5D3qSGJKU";
+            var props = {
+                uiOptions: {
+                    showGridlines: true,
+                    selectedCell: "'Sheet1'!C9",
+                    showRowColumnHeaders: true,
+                    showParametersTaskPane: true
+                },
+                interactivityOptions: {
+                    allowTypingAndFormulaEntry: true,
+                    allowParameterModification: true,
+                    allowSorting: true,
+                    allowFiltering: true,
+                    allowPivotTableInteractivity: true
+                }
+            };
+            Ewa.EwaControl.loadEwaAsync(fileToken, "myExcelDiv", props, onEwaLoaded);
+        }
+        function onEwaLoaded(asyncResult) { //*******************PASS asyncResult PARAMETER**************************
+
+            //*******************THERE IS NO SUCH THING CALLED "loadingdiv"**************************
+            //document.getElementById("loadingdiv").style.display = "none";
+
+            //*******************ADD THIS IF-ELSE STATMENT**************************
+            if (asyncResult.getSucceeded()) {
+                // Use the AsyncResult.getEwaControl() method to get a reference to the EwaControl object
+                alert("Async operation Succeeded!");
+                ewa = asyncResult.getEwaControl();
+
+            }
+            else {
+                alert("Async operation failed!");
+            }
+        }
+        // This sample gets the value in the highlighted cell.
+        // Try clicking on different cells then running the sample.
+        function execute() {
+            // Get unformatted range values (getValuesAsync(1,...) where 1 = Ewa.ValuesFormat.Formatted)
+            ewa.getActiveWorkbook().getActiveCell().getValuesAsync(1, getRangeValues, null);
+     
+        }
+
+        function getRangeValues(asyncResult) {
+            // Get the value from asyncResult if the asynchronous operation was successful.
+            if (asyncResult.getCode() == 0) {
+                // Get the value in active cell (located at row 0, column 0 of the
+                // range which consists of a single cell (the "active cell")).
+                alert("Result: " + asyncResult.getReturnValue()[0][0]);
+		alert(ewa.getActiveWorkbook().getWorkbookPath());
+            }
+            else {
+                alert("Operation failed with error message " + asyncResult.getDescription() + ".");
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- *******************THE SIMICOLON AFTER execute() IS REMOVED*********************** -->
+    <input type="button" onclick="execute()" value="Execute Sample"/>
+    <!-- *******************STYLE IS IMPROVED*********************** -->
+    <div id="myExcelDiv" style="width: 100%; height: 1000px"> </div>
+</body>
+
+</html>
